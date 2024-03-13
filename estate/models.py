@@ -1,6 +1,8 @@
 from odoo import _, fields, api, models
+import logging
 import time
 
+_logger = logging.getLogger('COUCOU')
 class Coucou(models.Model):
     _name = "coucou.coucou"
 
@@ -10,11 +12,14 @@ class Coucou(models.Model):
 
 
     def _cron_stuff(self, batch_size=1):
+        _logger.info('========do stuff here')
         stuff = self.search([('test', '=', False)], limit=batch_size)
         stuff.test = True
         time.sleep(5)
         test_count = self.search_count([('test', '=', False)])
         self.env['ir.cron']._notify_progress(0, test_count)
+        _logger.info('========finish stuff here %s', test_count)
+
 
 
     def populate_stuf(self):
