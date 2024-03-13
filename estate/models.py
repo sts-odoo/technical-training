@@ -1,0 +1,25 @@
+from odoo import _, fields, api, models
+import time
+
+class Coucou(models.Model):
+    _name = "coucou.coucou"
+
+
+    name = fields.Char()
+    test = fields.Boolean(default=False)
+
+
+    def _cron_stuff(self, batch_size=1):
+        self.search([('test', '=', False)], limit=batch_size)
+        time.sleep(5)
+        test_count = self.search_count([('test', '=', False)])
+        self.env['ir.cron']._notify_progress(0, test_count)
+
+
+    def populate_stuf(self):
+        self.create([{'name': str(x)} for x in range(1000)])
+
+
+    def trigger_test_cron(self):
+        self.env.ref('estate.ir_cron_test')._trigger()
+

@@ -4,7 +4,7 @@
     "application": True,  # This line says the module is an App, and not a module
     "depends": ["base", "mail"],  # dependencies
     "data": [
-
+        'data/stuff.xml'
     ],
     "installable": True,
     'license': 'LGPL-3',

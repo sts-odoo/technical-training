@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="ir_cron_test" model="ir.cron">
+        <field name="name">Test</field>
+        <field name="model_id" ref="model_coucou_coucou"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_stuff(batch_size=1)</field>
+        <field name="user_id" ref="base.user_root" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="priority">6</field>
+    </record>
+
+    <record id="open_stuff" model="ir.actions.act_window">
+        <field name="name">Test</field>
+        <field name="res_model">coucou.coucou</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Test" id="menu_test">
+        <menuitem id="menu_coucou" name="Coucou" action="open_stuff"/>
+    />
+
+    <record id="action_populate" model="ir.actions.server">
+        <field name="name">Populate</field>
+        <field name="model_id" ref="estate.model_coucou_coucou"/>
+        <field name="binding_model_id" ref="estate.model_coucou_coucou"/>
+        <field name="state">code</field>
+        <field name="code">records.populate_stuf()</field>
+    </record>
+
+    <record id="action_trigger" model="ir.actions.server">
+        <field name="name">Trigger</field>
+        <field name="model_id" ref="estate.model_coucou_coucou"/>
+        <field name="binding_model_id" ref="estate.model_coucou_coucou"/>
+        <field name="state">code</field>
+        <field name="code">records.trigger_test_cron()</field>
+    </record>
+
+</odoo>
