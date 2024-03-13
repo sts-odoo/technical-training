@@ -10,7 +10,8 @@ class Coucou(models.Model):
 
 
     def _cron_stuff(self, batch_size=1):
-        self.search([('test', '=', False)], limit=batch_size)
+        stuff = self.search([('test', '=', False)], limit=batch_size)
+        stuff.test = True
         time.sleep(5)
         test_count = self.search_count([('test', '=', False)])
         self.env['ir.cron']._notify_progress(0, test_count)
