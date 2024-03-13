@@ -20,7 +20,7 @@
 
     <menuitem name="Test" id="menu_test">
         <menuitem id="menu_coucou" name="Coucou" action="open_stuff"/>
-    />
+    </menuitem>
 
     <record id="action_populate" model="ir.actions.server">
         <field name="name">Populate</field>
