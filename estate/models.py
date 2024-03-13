@@ -29,3 +29,4 @@ class Coucou(models.Model):
     def trigger_test_cron(self):
         self.env.ref('estate.ir_cron_test')._trigger()
 
+
