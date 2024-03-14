@@ -21,7 +21,6 @@ class Coucou(models.Model):
         _logger.info('========finish stuff here %s', test_count)
 
 
-
     def populate_stuf(self):
         self.create([{'name': str(x)} for x in range(1000)])
 
