@@ -15,7 +15,7 @@ class Coucou(models.Model):
         _logger.info('========do stuff here')
         stuff = self.search([('test', '=', False)], limit=batch_size)
         stuff.test = True
-        time.sleep(5)
+        time.sleep(1)
         test_count = self.search_count([('test', '=', False)])
         self.env['ir.cron']._notify_progress(batch_size, test_count)
         _logger.info('========finish stuff here %s', test_count)
